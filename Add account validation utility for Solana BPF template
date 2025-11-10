@@ -1,0 +1,21 @@
+### 📍 Problem
+The current Solana BPF template lacks a simple and reusable way to validate
+incoming account data. Developers often need to manually check whether
+an account is owned by the program and writable, which leads to repetitive code.
+
+### 💡 Proposal
+Introduce a new utility function `validate_account_owner()` in a dedicated
+`src/utils.rs` module. This will ensure that program logic remains clean
+and reusable.
+
+### 🧩 Expected Behavior
+- Return `ProgramError::IncorrectProgramId` if the account owner doesn't match
+- Return `ProgramError::InvalidAccountData` if data length is invalid
+- Make validation available to all program entrypoints
+
+### 🚀 Benefits
+- Cleaner code across Solana programs
+- Consistent error handling
+- Easier onboarding for new developers
+
+If approved, I’ll submit a PR implementing this utility with tests and documentation.
